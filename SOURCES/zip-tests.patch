@@ -1,0 +1,27 @@
+From 527c199656850e86e8528ddf508c086d1147970b Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Mon, 18 May 2020 07:48:59 +0200
+Subject: [PATCH] relax test (TZ issue)
+
+---
+ tests/bug50678.phpt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/bug50678.phpt b/tests/bug50678.phpt
+index 156318e..a09c54d 100644
+--- a/tests/bug50678.phpt
++++ b/tests/bug50678.phpt
+@@ -18,11 +18,11 @@ $zip->open($filename);
+ $zip->extractTo($dirname);
+ $zip->close();
+ 
+-var_dump(date('Ymd', filemtime($dirname . '/entry1.txt')));
++var_dump(date('Ym', filemtime($dirname . '/entry1.txt')));
+ ?>
+ Done
+ --EXPECT--
+-string(8) "20060706"
++string(6) "200607"
+ Done
+ --CLEAN--
+ <?php
